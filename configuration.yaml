@@ -16,5 +16,6 @@ script: !include scripts.yaml
 mqtt: !include includes/mqtt.yaml
 weather: !include includes/weather.yaml
 discovery: !include includes/discovery.yaml
+recorder: !include includes/recorder.yaml
 
 
