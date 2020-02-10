@@ -7,3 +7,4 @@ exclude:
   entities:
     - sun.sun # Don't record sun data
     - sensor.date
+    - sensor.time

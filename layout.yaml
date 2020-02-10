@@ -1,0 +1,350 @@
+title: QSH
+resources:
+  - type: module
+    url: /community_plugin/banner-card/banner-card.js
+  - type: js
+    url: /community_plugin/bar-card/bar-card.js
+  - type: module
+    url: /community_plugin/lovelace-template-entity-row/template-entity-row.js
+  - type: js
+    url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - type: module
+    url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
+  - type: module
+    url: /community_plugin/weather-card/weather-card.js
+  - type: module
+    url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+  - type: module
+    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - type: module
+    url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
+  - type: module
+    url: /community_plugin/lovelace-auto-entities/auto-entities.js
+  - type: module
+    url: /community_plugin/custom-header/custom-header.js
+  - type: js
+    url: /community_plugin/dual-gauge-card/dual-gauge-card.js
+  - type: module
+    url: /community_plugin/lovelace-card-mod/card-mod.js
+  - type: module
+    url: /community_plugin/decluttering-card/decluttering-card.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: js
+    url: /community_plugin/flex-table-card/flex-table-card.js
+  - type: module
+    url: /community_plugin/lovelace-animated-background/animated-background.js
+  - type: module
+    url: /community_plugin/unused-card/unused-card.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/lovelace-github-entity-row/github-entity-row.js
+  - type: module
+    url: /community_plugin/flex-horseshoe-card/flex-horseshoe-card.js
+  - type: module
+    url: /community_plugin/bignumber-card/bignumber-card.js
+views:
+  - title: ''
+    path: main
+    icon: 'mdi:alpha'
+    badges: []
+    cards:
+      - type: 'custom:simple-weather-card'
+        entity: weather.dark_sky
+  - path: default_view
+    title: ''
+    icon: 'mdi:home'
+    badges:
+      - entity: binary_sensor.updater
+      - entity: binary_sensor.etekcity_1_status
+      - entity: binary_sensor.etekcity_3_status
+      - entity: binary_sensor.etekcity_5_status
+      - entity: binary_sensor.sonoff_1_status
+      - entity: binary_sensor.etekcity_4_status
+      - entity: binary_sensor.etekcity_7_status
+      - entity: binary_sensor.etekcity_6_status
+      - entity: binary_sensor.tv_ambilight_status
+      - entity: person.admin
+      - entity: sensor.plex_qsh
+      - entity: sensor.etekcity_1_signal
+      - entity: sensor.etekcity_3_signal
+      - entity: sensor.etekcity_5_signal
+      - entity: sensor.sonoff_1_signal
+      - entity: sensor.etekcity_4_signal
+      - entity: sensor.etekcity_7_signal
+      - entity: sensor.etekcity_6_signal
+      - entity: sensor.tv_ambilight_signal
+      - entity: sensor.led_odin_estimated_current
+      - entity: sensor.led_odin_uptime
+      - entity: sensor.led_odin_free_memory
+      - entity: sensor.led_lamp_estimated_current
+      - entity: sensor.led_lamp_uptime
+      - entity: sensor.led_lamp_free_memory
+      - entity: sensor.led_window_uptime
+      - entity: sensor.led_window_free_memory
+      - entity: sensor.led_window_estimated_current
+      - entity: sensor.led_frigg_estimated_current
+      - entity: sensor.led_frigg_uptime
+      - entity: sensor.led_frigg_free_memory
+      - entity: sensor.hacs
+      - entity: sensor.tv_ambilight_vcc
+      - entity: sun.sun
+    cards:
+      - type: 'custom:weather-card'
+        entity: weather.dark_sky
+      - type: media-control
+        entity: media_player.televizior
+      - type: media-control
+        entity: media_player.den_speaker
+      - type: entities
+        entities:
+          - sensor.etekcity_2_signal
+          - binary_sensor.etekcity_2_status
+          - switch.etekcity_2
+          - sensor.mfc_j485dw_magenta_ink_remaining
+          - sensor.mfc_j485dw_b_w_counter
+          - sensor.mfc_j485dw_black_ink_remaining
+          - sensor.mfc_j485dw_uptime
+          - sensor.mfc_j485dw_yellow_ink_remaining
+          - sensor.mfc_j485dw_cyan_ink_remaining
+          - sensor.mfc_j485dw_color_counter
+          - sensor.mfc_j485dw_status
+          - sensor.mfc_j485dw_page_counter
+          - sensor.etekcity2_tx
+          - sensor.etekcity2_rx
+        title: Office
+        show_header_toggle: true
+      - type: entities
+        entities:
+          - automation.frigg_lamp_on
+          - automation.odin_lamp_on
+          - automation.odin_lamp_off
+          - automation.enable_goodnight_scene_at_midnight
+          - automation.enable_afternoon_lights_1_hour_before_sunset
+          - automation.enable_goodmorning_scene_at_6_30
+          - automation.frigg_lamp_off
+        title: Automation
+      - type: entities
+        entities:
+          - light.tv_ambilight
+          - light.hue_couch_right
+          - light.hue_couch_left
+          - light.spare
+          - light.living_room
+          - light.led_odin
+          - light.led_lamp
+          - light.led_window
+          - light.led_frigg
+        title: Light
+      - type: media-control
+        entity: media_player.plex_aftmm
+      - type: media-control
+        entity: media_player.plex_oneplus_6
+      - type: media-control
+        entity: media_player.plex_chrome
+      - type: entities
+        entities:
+          - scene.odin_ambilight_on
+          - scene.frigg_ambilight_dimmed
+          - scene.afternoon_lights
+          - scene.odin_ambilight_dimmed
+          - scene.frigg_ambilight_off
+          - scene.goodmorning
+          - scene.odin_ambilight_off
+          - scene.goodmorning_2
+          - scene.movie_time
+          - scene.frigg_ambilight_on
+        title: Scene
+      - type: entities
+        entities:
+          - switch.etekcity_1
+          - switch.etekcity_3
+          - switch.etekcity_5
+          - switch.sonoff_1
+          - switch.etekcity_4
+          - switch.etekcity_7
+          - switch.etekcity_6
+          - switch.led_odin_nightlight
+          - switch.led_odin_sync_send
+          - switch.led_odin_sync_receive
+          - switch.led_lamp_sync_send
+          - switch.led_lamp_sync_receive
+          - switch.led_lamp_nightlight
+          - switch.led_window_sync_receive
+          - switch.led_window_nightlight
+          - switch.led_window_sync_send
+          - switch.led_frigg_nightlight
+          - switch.led_frigg_sync_send
+          - switch.led_frigg_sync_receive
+        title: Switch
+      - type: weather-forecast
+        entity: weather.dark_sky
+      - type: weather-forecast
+        entity: weather.home
+  - icon: 'mdi:laptop'
+    path: lab
+    badges: []
+    cards:
+      - type: vertical-stack
+        title: Printer
+        cards:
+          - type: 'custom:bar-card'
+            entity: sensor.mfc_j485dw_cyan_ink_remaining
+            color: '#00ffff'
+            height: 40px
+            direction: right
+            rounding: 3px
+            title_position: left
+            icon_position: 'off'
+            indicator: auto
+            saturation: 50%
+            animation: auto
+            speed: 1000
+            delay: 5000
+            min: 0
+            max: 100
+            padding: 4px
+            align: center
+            tap_action: info
+            show_value: true
+            limit_value: false
+            show_minmax: false
+            title: false
+            severity: false
+            target: false
+            attribute: false
+            icon: false
+            charge_entity: false
+            unit_of_measurement: false
+            card_style: false
+            icon_style: false
+            title_style: false
+            value_style: false
+            minmax_style: false
+            background_style: false
+            visibility: false
+            decimal: false
+            entities:
+              - entity: sensor.mfc_j485dw_cyan_ink_remaining
+            width: 70%
+          - type: 'custom:bar-card'
+            entity: sensor.mfc_j485dw_magenta_ink_remaining
+            color: '#00ffff'
+            height: 40px
+            direction: right
+            rounding: 3px
+            title_position: left
+            icon_position: 'off'
+            indicator: auto
+            saturation: 50%
+            animation: auto
+            speed: 1000
+            delay: 5000
+            min: 0
+            max: 100
+            padding: 4px
+            align: center
+            tap_action: info
+            show_value: true
+            limit_value: false
+            show_minmax: false
+            title: false
+            severity: false
+            target: false
+            attribute: false
+            icon: false
+            charge_entity: false
+            unit_of_measurement: false
+            card_style: false
+            icon_style: false
+            title_style: false
+            value_style: false
+            minmax_style: false
+            background_style: false
+            visibility: false
+            decimal: false
+            entities:
+              - entity: sensor.mfc_j485dw_magenta_ink_remaining
+            width: 70%
+          - type: 'custom:bar-card'
+            entity: sensor.mfc_j485dw_yellow_ink_remaining
+            color: 'var(--custom-bar-card-color, var(--primary-color))'
+            height: 40px
+            direction: right
+            rounding: 3px
+            title_position: left
+            icon_position: 'off'
+            indicator: auto
+            saturation: 50%
+            animation: auto
+            speed: 1000
+            delay: 5000
+            min: 0
+            max: 100
+            padding: 4px
+            align: center
+            tap_action: info
+            show_value: true
+            limit_value: false
+            show_minmax: false
+            title: false
+            severity: false
+            target: false
+            attribute: false
+            icon: false
+            charge_entity: false
+            unit_of_measurement: false
+            card_style: false
+            icon_style: false
+            title_style: false
+            value_style: false
+            minmax_style: false
+            background_style: false
+            visibility: false
+            decimal: false
+            entities:
+              - entity: sensor.mfc_j485dw_yellow_ink_remaining
+            width: 70%
+          - type: 'custom:bar-card'
+            entity: sensor.mfc_j485dw_black_ink_remaining
+            color: 'var(--custom-bar-card-color, var(--primary-color))'
+            height: 40px
+            direction: right
+            rounding: 3px
+            title_position: left
+            icon_position: 'off'
+            indicator: auto
+            saturation: 50%
+            animation: auto
+            speed: 1000
+            delay: 5000
+            min: 0
+            max: 100
+            padding: 4px
+            align: center
+            tap_action: info
+            show_value: true
+            limit_value: false
+            show_minmax: false
+            title: false
+            severity: false
+            target: false
+            attribute: false
+            icon: false
+            charge_entity: false
+            unit_of_measurement: false
+            card_style: false
+            icon_style: false
+            title_style: false
+            value_style: false
+            minmax_style: false
+            background_style: false
+            visibility: false
+            decimal: false
+            entities:
+              - entity: sensor.mfc_j485dw_black_ink_remaining
+            width: 70%
+      - type: 'custom:unused-card'
+custom_header:
+  compact_mode: true

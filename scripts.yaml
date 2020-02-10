@@ -1,0 +1,12 @@
+'1581313705821':
+  alias: Lamp ON
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.led_lamp
+'1581313772428':
+  alias: Lamp OFF
+  sequence:
+  - service: light.turn_off
+    data:
+      entity_id: light.led_lamp

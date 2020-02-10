@@ -8,14 +8,15 @@ http: !include includes/http.yaml
 
 # Managed via UI
 # group: !include groups.yaml # nope
-scene: !include scenes.yaml
 automation: !include automations.yaml
+scene: !include scenes.yaml
 script: !include scripts.yaml
 
 # Includes
-mqtt: !include includes/mqtt.yaml
-weather: !include includes/weather.yaml
 discovery: !include includes/discovery.yaml
+mqtt: !include includes/mqtt.yaml
 recorder: !include includes/recorder.yaml
+sensor: !include includes/sensor.yaml
+weather: !include includes/weather.yaml
 
 
