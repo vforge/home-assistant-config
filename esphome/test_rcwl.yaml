@@ -1,0 +1,21 @@
+substitutions:
+  devicename: test_rcwl
+  name: Test RCWL
+
+<<: !include .d1_template.yaml
+  
+# binary_sensor:
+#   - platform: status
+#     name: ${name} Status
+#   - platform: gpio
+#     pin: D7
+#     name: "RCWL Sensor"
+#     device_class: motion
+    
+    
+sensor:
+  - platform: ultrasonic
+    trigger_pin: D1
+    echo_pin: D2
+    name: ${name} Sensor
+    update_interval: 5s

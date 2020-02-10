@@ -1,0 +1,72 @@
+- id: '1578379891294'
+  alias: Enable Goodmorning scene at 6:30
+  description: ''
+  trigger:
+  - at: 06:30
+    platform: time
+  condition: []
+  action:
+  - scene: scene.goodmorning
+- id: '1578379987100'
+  alias: Enable Goodnight scene at midnight
+  description: ''
+  trigger:
+  - at: 00:00
+    platform: time
+  condition: []
+  action:
+  - scene: scene.goodnight
+- id: '1578460379962'
+  alias: Enable afternoon lights 1 hour before sunset
+  description: ''
+  trigger:
+  - event: sunset
+    offset: '-1:00'
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.afternoon_lights
+- id: '1579503295849'
+  alias: Odin lamp on
+  description: Turn on Odin's leds when Odin is home
+  trigger:
+  - entity_id: device_tracker.odin
+    from: not_home
+    platform: state
+    to: home
+  condition: []
+  action:
+  - scene: scene.odin_ambilight_on
+- id: '1579503295850'
+  alias: Odin lamp off
+  description: Turn off Odin's leds when Odin is away
+  trigger:
+  - entity_id: device_tracker.odin
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - scene: scene.odin_ambilight_off
+- id: '1579503295859'
+  alias: Frigg lamp on
+  description: Turn on Frigg's leds when Frigg is home
+  trigger:
+  - entity_id: device_tracker.frigg
+    from: not_home
+    platform: state
+    to: home
+  condition: []
+  action:
+  - scene: scene.frigg_ambilight_on
+- id: '1579503295860'
+  alias: Frigg lamp off
+  description: Turn off Frigg's leds when Frigg is away
+  trigger:
+  - entity_id: device_tracker.frigg
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - scene: scene.frigg_ambilight_off

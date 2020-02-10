@@ -1,0 +1,20 @@
+---
+# Core
+homeassistant: !include includes/homeassistant.yaml
+default_config:
+frontend:
+  themes: !include_dir_merge_named themes/
+http: !include includes/http.yaml
+
+# Managed via UI
+# group: !include groups.yaml # nope
+scene: !include scenes.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+# Includes
+mqtt: !include includes/mqtt.yaml
+weather: !include includes/weather.yaml
+discovery: !include includes/discovery.yaml
+
+

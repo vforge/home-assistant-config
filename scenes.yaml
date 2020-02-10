@@ -1,0 +1,88 @@
+- id: '1578380563006'
+  name: Movie Time
+  entities:
+    light.tv_ambilight:
+      state: 'on'
+    light.hue_couch_left:
+      brightness: 25
+      state: 'on'
+    light.hue_couch_right:
+      brightness: 25
+      state: 'on'
+- id: '1578380563007'
+  name: Afternoon lights
+  entities:
+    light.tv_ambilight:
+      state: 'off'
+    light.hue_couch_left:
+      brightness: 250
+      state: 'on'
+    light.hue_couch_right:
+      brightness: 250
+      state: 'on'
+- id: '1578380563008'
+  name: Goodnight
+  entities:
+    light.hue_couch_left:
+      state: 'off'
+    light.hue_couch_right:
+      brightness: 125
+      state: 'on'
+    light.tv_ambilight:
+      state: 'off'
+    switch.etekcity_1:
+      state: 'off'
+- id: '1578380563009'
+  name: Goodmorning
+  entities:
+    switch.etekcity_1:
+      state: 'on'
+- id: '1578380563010'
+  name: Odin ambilight on
+  entities:
+    light.led_odin:
+      brightness: 255
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+- id: '1578380563011'
+  name: Odin ambilight dimmed
+  entities:
+    light.led_odin:
+      brightness: 5
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+- id: '1578380563012'
+  name: Odin ambilight off
+  entities:
+    light.led_odin:
+      brightness: 0
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+- id: '1578380563020'
+  name: Frigg ambilight on
+  entities:
+    light.led_frigg:
+      brightness: 255
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+- id: '1578380563021'
+  name: Frigg ambilight dimmed
+  entities:
+    light.led_frigg:
+      brightness: 5
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+- id: '1578380563022'
+  name: Frigg ambilight off
+  entities:
+    light.led_frigg:
+      brightness: 0
+      effect: Solid
+      icon: mdi:led-strip-variant
+      state: 'on'
+

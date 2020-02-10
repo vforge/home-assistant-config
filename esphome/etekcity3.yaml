@@ -1,0 +1,6 @@
+substitutions:
+  devicename: etekcity3
+  name: Etekcity 3
+
+<<: !include .etekcity_template.yaml
+

@@ -1,0 +1,23 @@
+substitutions:
+  devicename: tv_ambilight
+  name: TV Ambilight
+
+light:
+  - platform: neopixelbus
+    type: GRB
+    pin: GPIO3
+    num_leds: 180
+    name: ${name}
+    effects:
+      - random:
+      - strobe:
+      - flicker:
+      - addressable_rainbow:
+      - addressable_color_wipe:
+      - addressable_scan:
+      - addressable_twinkle:
+      - addressable_random_twinkle:
+      - addressable_fireworks:
+      - addressable_flicker:
+
+<<: !include .d1_template.yaml

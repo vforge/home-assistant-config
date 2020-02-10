@@ -1,0 +1,6 @@
+substitutions:
+  devicename: sonoff1
+  name: Sonoff 1
+
+<<: !include .sonoff_template.yaml
+

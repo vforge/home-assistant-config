@@ -1,0 +1,60 @@
+substitutions:
+  devicename: etekcityXX
+  upper_devicename: Etekcity XX
+
+esphome:
+  name: ${devicename}
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  safe_mode: True
+
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: True
+    name: ${upper_devicename} Button
+    id: ${devicename}_button
+    internal: True
+    on_press:
+      - switch.toggle: relay
+    filters:
+      - delayed_on: 10ms
+
+switch:
+  - platform: gpio
+    name: ${upper_devicename}
+    id: relay
+    pin: GPIO04
+    restore_mode: ALWAYS_OFF
+
+status_led:
+  pin:
+    number: GPIO05
+    inverted: True
+
+text_sensor:
+  - platform: version
+    name: ${devicename}_esphome_version
+
+sensor:
+  - platform: wifi_signal
+    name: ${devicename}_wifi_signal
+    update_interval: 30s
+
+  - platform: uptime
+    name: ${devicename}_uptime

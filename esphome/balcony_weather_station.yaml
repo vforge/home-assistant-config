@@ -1,0 +1,101 @@
+substitutions:
+  devicename: balcony_weather_station
+  name: Balcony Weather
+
+esphome:
+  name: ${devicename}
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+  manual_ip:
+    static_ip: 192.168.29.90
+    gateway: 192.168.29.1
+    subnet: 255.255.255.0
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  safe_mode: True
+
+mqtt:
+  broker: !secret mqtt_ip
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: False
+  discovery_retain: False
+  on_message:
+    topic: balcony_weather_station/ota_mode
+    payload: 'ON'
+    then:
+      - deep_sleep.prevent: deep_sleep_1
+
+i2c:
+  sda: D2
+  scl: D1
+  scan: False
+
+binary_sensor:
+  - platform: status
+    name: ${name} Status
+    
+deep_sleep:
+  run_duration: 45s
+  sleep_duration: 30min
+  id: deep_sleep_1
+  
+sensor:
+  #- platform: adc
+  #  pin: A0
+  #  name: ${name} Brightness
+  #  update_interval: 30s
+
+  - platform: bme280
+    address: 0x76
+    update_interval: 30s
+    temperature:
+      name: ${name} Temperature
+      oversampling: 16x
+      id: temperature
+    pressure:
+      name: ${name} Pressure
+      id: pressure
+    humidity:
+      name: ${name} Humidity
+      id: humidity
+
+  - platform: wifi_signal
+    name: ${name} Signal
+    update_interval: 30s
+
+  # - platform: uptime
+  #   name: ${name} Uptime
+  #   filters:
+  #     - lambda: return x / 3600;
+  #   unit_of_measurement: "h"
+  #   accuracy_decimals: 1
+  #   update_interval: 30s
+
+  - platform: adc
+    pin: A0
+    name: ${name} Battery
+    filters:
+      - lambda: return x * 100;
+    unit_of_measurement: "%"
+    update_interval: 30s
+
+switch:
+  # - platform: restart
+  #   name: ${name} Restart
+  - platform: shutdown
+    name: ${name} Shutdown
+
+# text_sensor:
+#   - platform: version
+#     name: ${name} Version

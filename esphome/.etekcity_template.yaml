@@ -1,0 +1,72 @@
+esphome:
+  name: ${devicename}
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  safe_mode: True
+
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: True
+    name: ${name} Button
+    id: button
+    internal: True
+    on_press:
+      - switch.toggle: relay
+    filters:
+      - delayed_on: 10ms
+
+  - platform: status
+    name: ${name} Status
+
+switch:
+  - platform: gpio
+    name: ${name}
+    id: relay
+    pin: GPIO04
+    restore_mode: ALWAYS_OFF
+
+  # - platform: restart
+  #   name: ${name} Restart
+
+status_led:
+  pin:
+    number: GPIO05
+    inverted: True
+
+text_sensor:
+  # - platform: version
+  #   name: ${name} Version
+
+sensor:
+  - platform: wifi_signal
+    name: ${name} Signal
+    update_interval: 60s
+
+  # - platform: uptime
+  #   name: ${name} Uptime
+  #   filters:
+  #     - lambda: return x / 3600;
+  #   unit_of_measurement: "h"
+  #   accuracy_decimals: 1
+  #   update_interval: 60s
+
+  # - platform: adc
+  #   pin: VCC
+  #   name: ${name} VCC
+  #   update_interval: 15s

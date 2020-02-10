@@ -1,0 +1,64 @@
+esphome:
+  name: bme_test
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+i2c:
+  sda: D1
+  scl: D2
+  scan: True
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+  - platform: sntp
+    id: sntp_time
+  
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    address: 0x27
+    lambda: |-
+      it.printf(0, 0, "%2.0f C", id(temperature).state);
+      it.strftime(8, 0, "%H:%M:%S", id(sntp_time).now());
+      it.printf(0, 1, "%2.0f %%    %4.0f hPa", id(humidity).state, id(pressure).state);
+
+sensor:
+  - platform: adc
+    pin: A0
+    name: "Brightness"
+    update_interval: 60s
+  - platform: bme280
+    address: 0x76
+    update_interval: 60s
+    temperature:
+      name: "Temperature"
+      oversampling: 16x
+      id: temperature
+    pressure:
+      name: "Pressure"
+      id: pressure
+    humidity:
+      name: "BME280 Humidity"
+      id: humidity
+  - platform: wifi_signal
+    name: ${devicename}_wifi_signal
+    update_interval: 30s
+  - platform: uptime
+    name: ${devicename}_uptime
+
+text_sensor:
+  - platform: version
+    name: ${devicename}_esphome_version
